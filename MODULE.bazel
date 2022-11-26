@@ -1,0 +1,26 @@
+
+module(
+    name = "rules_roborio_toolchain",
+    version = "2021-1",
+    compatibility_level = 2021,
+)
+
+bazel_dep(name = "platforms", version = "0.0.4")
+
+setup_toolchains_dependencies = use_extension("//:maven_deps.bzl", "setup_toolchains_dependencies")
+use_repo(
+    setup_toolchains_dependencies,
+    "bazelrio_roborio_toolchain_macos",
+    "bazelrio_roborio_toolchain_linux",
+    "bazelrio_roborio_toolchain_windows",
+)
+
+configure_toolchain = use_extension("//toolchains:toolchain_config.bzl", "cc_toolchain_config")
+use_repo(
+    configure_toolchain,
+    "cc_toolchain_config",
+)
+
+register_toolchains("@rules_roborio_toolchain//toolchains:macos")
+register_toolchains("@rules_roborio_toolchain//toolchains:linux")
+register_toolchains("@rules_roborio_toolchain//toolchains:windows")
