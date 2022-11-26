@@ -13,30 +13,30 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_macos",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2021-2/FRC-2021-Mac-Toolchain-7.3.0.tar.gz",
-        sha256 = "0822ff945ff422b176571cebe7b2dfdc0ef6bf685d3b6f6833db8dc218d992ae",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-5/cortexa9_vfpv3-roborio-academic-2023-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
+        sha256 = "511a64461bfdec00bacb9abe1470f1c112fc9773b29dbb275b1dc9560b973146",
         build_file_content = filegroup_all,
         patches = [
-            "@bazelrio//dependencies/toolchains/2021/patches:libc_no_sandboxfs.patch",
-            "@bazelrio//dependencies/toolchains/2021/patches:libpthread_no_sandboxfs.patch",
+            "@bazelrio//dependencies/toolchains/2023/2023_5/patches:libc_no_sandboxfs.patch",
+            "@bazelrio//dependencies/toolchains/2023/2023_5/patches:libpthread_no_sandboxfs.patch",
         ],
     )
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_linux",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2021-2/FRC-2021-Linux-Toolchain-7.3.0.tar.gz",
-        sha256 = "00cc58bf0607d71e725919d28e22714ce1920692c4864bc86353fc8139cbf7b7",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-5/cortexa9_vfpv3-roborio-academic-2023-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
+        sha256 = "56bd5b53a4149b06fd4cf675dc0596668af47ca8da72c461b7d772ada35cbdc5",
         build_file_content = filegroup_all,
         patches = [
-            "@bazelrio//dependencies/toolchains/2021/patches:libc_no_sandboxfs.patch",
-            "@bazelrio//dependencies/toolchains/2021/patches:libpthread_no_sandboxfs.patch",
+            "@bazelrio//dependencies/toolchains/2023/2023_5/patches:libc_no_sandboxfs.patch",
+            "@bazelrio//dependencies/toolchains/2023/2023_5/patches:libpthread_no_sandboxfs.patch",
         ],
     )
     maybe(
         http_archive,
         "windows",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2021-2/FRC-2021-Windows-Toolchain-7.3.0.zip",
-        sha256 = "f3e9ba32b63d3cd26e242feeb14e878fecbda86c19c12b98c3084c629e06acb3",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-5/cortexa9_vfpv3-roborio-academic-2023-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
+        sha256 = "04049728801e97fa41a8aa0837e40103c89391d0479f106aad6f959bbccd9da5",
         build_file_content = filegroup_all,
     )
 

@@ -15,9 +15,9 @@ def __configure_toolchain_impl(repository_ctx):
     substitutions = {
         "{sep}": "/",
         "{compiler_repo}": "rules_roborio_toolchain~override~deps~windows",
-        "{bin_subfolder}": "frc2021/roborio/bin",
-        "{sysroot_subfolder}": "frc2021/roborio/arm-frc2021-linux-gnueabi",
-        "{binary_prefix}": "arm-frc2021-linux-gnueabi-",
+        "{bin_subfolder}": "roborio-academic/bin",
+        "{sysroot_subfolder}": "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
+        "{binary_prefix}": "arm-frc2023-linux-gnueabi-",
         "{tool_platform_suffix}": "",
     }
     
