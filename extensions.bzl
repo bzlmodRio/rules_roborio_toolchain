@@ -1,7 +1,6 @@
-
-# load("//toolchains:posix.bzl", "sh_posix_configure")
+load("//private:configure_toolchain.bzl", cfg = "configure_toolchain")
 
 def _sh_configure_impl(ctx):
-    sh_posix_configure(register = False)
+    cfg(register = False)
 
 sh_configure = module_extension(implementation = _sh_configure_impl)

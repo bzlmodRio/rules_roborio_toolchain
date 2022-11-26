@@ -12,7 +12,7 @@ def _impl(ctx):
     tool_paths = [
         tool_path(
             name = name,
-            path = "@rules_roborio_toolchain//:gcc",
+            path = "bin/{}{}".format(name, ctx.attr.script_suffix),
         )
         for name in [
             "ar",
@@ -26,15 +26,15 @@ def _impl(ctx):
         ]
     ]
 
-    for p in tool_paths:
-        print("Hello ", p)
-        l = Label(p.path)
-
-        print(l.workspace_root)
-        print(l.package)
-        print(l.name)
-        # print(l.workspace_root) + "/" + tool_label.package + "/" + tool_label.name)
-        print(l)
+    # for p in tool_paths:
+    #     print("Hello ", p)
+    #     l = Label(p.path)
+# 
+    #     print(l.workspace_root)
+    #     print(l.package)
+    #     print(l.name)
+    #     # print(l.workspace_root) + "/" + tool_label.package + "/" + tool_label.name)
+    #     print(l)
 
     return cc_common.create_cc_toolchain_config_info(
         ctx = ctx,
@@ -48,7 +48,7 @@ def _impl(ctx):
         abi_version = "gcc-12.1.0",
         abi_libc_version = "glibc-2.24",
         tool_paths = tool_paths,
-        builtin_sysroot = "external/__bazelrio_roborio_toolchain_{}/roborio-academic/arm-nilrt-linux-gnueabi/sysroot".format(
+        builtin_sysroot = "external/{compiler_repo}/{sysroot_subfolder}".format(
             ctx.attr.host_os,
         ),
         features = [
@@ -65,7 +65,6 @@ def _impl(ctx):
                             flag_group(
                                 flags = [
                                     "-no-canonical-prefixes",
-                                    "-std=c++20",
                                 ],
                             ),
                         ],

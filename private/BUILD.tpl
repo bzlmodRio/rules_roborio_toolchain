@@ -82,7 +82,7 @@ toolchain(
         # assuming x86/ARM Macs use the same x86 WPILib toolchain
         "@platforms//os:osx",
     ],
-    target_compatible_with = ["//constraints/is_roborio:true"],
+    target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
     toolchain = ":roborio_toolchain_definition_macos",
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
@@ -93,7 +93,7 @@ toolchain(
         "@platforms//cpu:x86_64",
         "@platforms//os:linux",
     ],
-    target_compatible_with = ["//constraints/is_roborio:true"],
+    target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
     toolchain = ":roborio_toolchain_definition_linux",
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
@@ -104,7 +104,7 @@ toolchain(
         "@platforms//cpu:x86_64",
         "@platforms//os:windows",
     ],
-    target_compatible_with = ["//constraints/is_roborio:true"],
+    target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
     toolchain = ":roborio_toolchain_definition_windows",
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
