@@ -7,3 +7,4 @@ cc_autoconf(
 
 print("Hello")
 
+print("STuff")
