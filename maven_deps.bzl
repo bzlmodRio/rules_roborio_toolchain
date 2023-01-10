@@ -23,13 +23,13 @@ def __setup_toolchains_dependencies(mctx):
     )
     maybe(
         http_archive,
-        "bazelrio_roborio_toolchain_linux",
+        "linux",
         url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-5/cortexa9_vfpv3-roborio-academic-2023-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
         sha256 = "56bd5b53a4149b06fd4cf675dc0596668af47ca8da72c461b7d772ada35cbdc5",
         build_file_content = filegroup_all,
         patches = [
-            "@bazelrio//dependencies/toolchains/2023/2023_5/patches:libc_no_sandboxfs.patch",
-            "@bazelrio//dependencies/toolchains/2023/2023_5/patches:libpthread_no_sandboxfs.patch",
+            #"@bazelrio//dependencies/toolchains/2023/2023_5/patches:libc_no_sandboxfs.patch",
+            #"@bazelrio//dependencies/toolchains/2023/2023_5/patches:libpthread_no_sandboxfs.patch",
         ],
     )
     maybe(
@@ -40,6 +40,9 @@ def __setup_toolchains_dependencies(mctx):
         build_file_content = filegroup_all,
     )
 
+
+def setup_legacy_setup_toolchains_dependencies():
+    __setup_toolchains_dependencies(None)
 
     
 deps = module_extension(

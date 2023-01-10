@@ -1,0 +1,20 @@
+local_repository(
+    name = "rules_roborio_toolchain",
+    path = "..",
+)
+
+load("@rules_roborio_toolchain//:maven_deps.bzl", "setup_legacy_setup_toolchains_dependencies")
+setup_legacy_setup_toolchains_dependencies()
+
+
+register_toolchains(
+    # "@rules_roborio_toolchain//toolchains/roborio:macos",
+    # "@rules_roborio_toolchain//toolchains/roborio:linux",
+    # "@rules_roborio_toolchain//toolchains/roborio:windows",
+    # "@rules_roborio_toolchain//toolchains/jdk:macos",
+    # "@rules_roborio_toolchain//toolchains/jdk:linux",
+    # "@rules_roborio_toolchain//toolchains/jdk:windows",
+)
+
+load("@rules_roborio_toolchain//private:configure_toolchain.bzl", "configure_toolchain")
+configure_toolchain(register=True)

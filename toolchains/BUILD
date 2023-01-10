@@ -26,7 +26,7 @@ filegroup(
 filegroup(
     name = "toolchains_files_linux",
     srcs = [
-        "@bazelrio_roborio_toolchain_linux//:all",
+        "@linux//:all",
     ] + glob(["shims/linux/**"]),
 )
 

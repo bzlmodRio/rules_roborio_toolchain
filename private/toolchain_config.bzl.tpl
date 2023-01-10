@@ -9,6 +9,8 @@ load(
 
 def _impl(ctx):
     print("Hello")
+    print("{compiler_repo}")
+    print("Label ", Label("@{compiler_repo}"))
     tool_paths = [
         tool_path(
             name = name,

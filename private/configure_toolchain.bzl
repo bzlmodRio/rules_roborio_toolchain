@@ -1,6 +1,7 @@
 
 
 def __configure_toolchain_impl(repository_ctx):
+    print("Configuring")
     BINARIES = [
         "ar",
         "cpp",
@@ -28,6 +29,9 @@ def __configure_toolchain_impl(repository_ctx):
         substitutions["{tool_platform_suffix}"] = ".exe"
         substitutions["{bin_subfolder}"] = substitutions["{bin_subfolder}"].replace("/", "\\")
         substitutions["{arg_passthrough}"] = "%*"
+    elif repository_ctx.os.name.startswith("linux"):
+        substitutions["{wrapper_extension}"] = ""
+        substitutions["{compiler_repo}"] = compiler_name + "-compiler-linux"
     else:
         fail("Unknown os " + repository_ctx.os.name)
 
@@ -64,6 +68,6 @@ def configure_toolchain(name = "local_roborio", register = True):
     __configure_toolchain(name = name)
 
     if register:
-        fail("Not supported")
+        native.register_toolchains("@{}//:linux".format(name))
 
 
