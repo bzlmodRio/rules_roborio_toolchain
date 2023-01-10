@@ -67,12 +67,6 @@ def configure_cross_compiler_impl(repository_ctx):
     )
 
     repository_ctx.template(
-        "configure_toolchain.bzl",
-        repository_ctx.path(Label("@rules_roborio_toolchain//toolchains/cross_compiler/" + compiler_name + ":configure_toolchain.bzl")),
-        substitutions = substitutions,
-    )
-
-    repository_ctx.template(
         "cc-toolchain-config.bzl",
         repository_ctx.path(Label("@rules_roborio_toolchain//toolchains/cross_compiler:cc-toolchain-config.bzl")),
         substitutions = substitutions,
