@@ -5,7 +5,7 @@ build --incompatible_enable_cc_toolchain_resolution
 build --enable_platform_specific_config
 
 # Roborio
-build:roborio --platforms=@rules_roborio_toolchain//toolchains/platforms/roborio
+build:roborio --platforms=@rules_roborio_toolchain//platforms/roborio
 # build:roborio --copt=-std=c++17
 # build:roborio --crosstool_top=@local_roborio//:compiler
 # build:roborio --cpu=roborio
