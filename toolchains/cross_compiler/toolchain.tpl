@@ -19,6 +19,7 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
     toolchain_key = cpu
     
     cxx_builtin_include_directories = [
+            "external/roborio-compiler-linux/roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/lib/gcc/arm-nilrt-linux-gnueabi/12/include",
             "external/{actual_compiler_path}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include",
             "external/{actual_compiler_path}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include-fixed",
             "external/{actual_compiler_path}/{sysroot}/usr/include/{sysroot_include_folder}/c++/{cxx_version}",
@@ -28,6 +29,7 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
             "external/{actual_compiler_path}/{sysroot}/usr/include/{sysroot_include_folder}",
             "external/{actual_compiler_path}/{sysroot}/usr/include",
     ]
+    print("\n" + "\n".join(cxx_builtin_include_directories))
     
     cc_toolchain_config(
         name = cc_toolchain_config_name,

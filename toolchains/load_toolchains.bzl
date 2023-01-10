@@ -92,9 +92,12 @@ def load_toolchains():
     configure_cross_compiler(
         name = "local_roborio",
         compiler = "roborio",
-        bin_subfolder = "frc2021/roborio/bin",
-        bin_prefix = "arm-frc2021-linux-gnueabi-",
-        sysroot_subfolder = "frc2021/roborio/arm-frc2021-linux-gnueabi",
-        cxx_version = "7.3.0",
-        sysroot_include_folder = "arm-frc2021-linux-gnueabi",
+        bin_subfolder = "roborio-academic/bin",
+        bin_prefix = "arm-frc2023-linux-gnueabi-",
+        sysroot_subfolder = "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
+        cxx_version = "12",
+        sysroot_include_folder = "arm-nilrt-linux-gnueabi",
     )
+
+#                                                                                 external/roborio-compiler-linux/roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/arm-frc2021-linux-gnueabi
+#/home/pjreiniger/.cache/bazel/_bazel_pjreiniger/d3255a5b5de915fc57924d6275880f3e/external/roborio-compiler-linux/roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/arm-nilrt-linux-gnueabi/bits/c++config.h

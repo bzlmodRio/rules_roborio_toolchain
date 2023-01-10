@@ -16,6 +16,8 @@ use_repo(
     "roborio-compiler-windows",
 )
 
+print("Hello world")
+
 sh_configure = use_extension("@rules_roborio_toolchain//:extensions.bzl", "sh_configure")
 use_repo(sh_configure, "local_roborio")
 

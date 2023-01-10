@@ -5,19 +5,15 @@ filegroup_all = """
 
 filegroup(
     name = "tools",
-    srcs = glob(["frc2021/roborio/bin/arm-frc2021-linux-gnueabi-*"]),
+    srcs = glob(["roborio-academic/bin/arm-frc2023-linux-gnueabi-*"]),
     visibility = ["//visibility:public"],
 )
 
 filegroup(
     name = "includes",
     srcs = glob([
-        "frc2021/roborio/arm-frc2021-linux-gnueabi/usr/lib/gcc/arm-frc2021-linux-gnueabi/7.3.0/include/**",
-        "frc2021/roborio/arm-frc2021-linux-gnueabi/usr/lib/gcc/arm-frc2021-linux-gnueabi/7.3.0/include-fixed/**",
-        "frc2021/roborio/arm-frc2021-linux-gnueabi/usr/include/c++/7.3.0/**",
-        "frc2021/roborio/arm-frc2021-linux-gnueabi/usr/include/c++/7.3.0/arm-frc2021-linux-gnueabi/**",
-        "frc2021/roborio/arm-frc2021-linux-gnueabi/usr/include/c++/7.3.0/backward/**",
-        "frc2021/roborio/arm-frc2021-linux-gnueabi/usr/include/**",
+        "roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/lib/**",
+        "roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/include/**",
     ]),
     visibility = ["//visibility:public"],
 )
@@ -34,22 +30,22 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "roborio-compiler-macos",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-5/cortexa9_vfpv3-roborio-academic-2023-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
-        sha256 = "511a64461bfdec00bacb9abe1470f1c112fc9773b29dbb275b1dc9560b973146",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
+        sha256 = "345bcbbc81958ad91dc87f51a94f1a709fdd7001b7f2995eaa016c04822f6d17",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "roborio-compiler-linux",
-        sha256 = "00cc58bf0607d71e725919d28e22714ce1920692c4864bc86353fc8139cbf7b7",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2021-2/FRC-2021-Linux-Toolchain-7.3.0.tar.gz",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
+        sha256 = "f3d48103c311e07e4da5e6f2cae426d34d582b627c342f20407530f8cb1c93a1",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "roborio-compiler-windows",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-5/cortexa9_vfpv3-roborio-academic-2023-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
-        sha256 = "04049728801e97fa41a8aa0837e40103c89391d0479f106aad6f959bbccd9da5",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
+        sha256 = "36b94b972fd017f6fd15a57ddbaa20e18616d72f7de16d9c81c03a1e58cb8475",
         build_file_content = filegroup_all,
     )
 
