@@ -1,6 +1,8 @@
 def configure_cross_compiler_impl(repository_ctx):
     compiler_name = repository_ctx.attr.compiler
 
+    print("Configuring cross compiler", compiler_name)
+
     substitutions = {
         "{bin_subfolder}": repository_ctx.attr.bin_subfolder,
         "{binary_prefix}": repository_ctx.attr.bin_prefix,
@@ -32,6 +34,9 @@ def configure_cross_compiler_impl(repository_ctx):
     else:
         fail("Unknown os " + repository_ctx.os.name)
 
+
+    # substitutions["{compiler_repo}"] = "rules_roborio_toolchain~override~sh_configure~local_roborio"
+
     BINARIES = [
         "ar",
         "cpp",
@@ -43,9 +48,12 @@ def configure_cross_compiler_impl(repository_ctx):
         "strip",
     ]
 
+    compiler_workspace = Label("@" + substitutions["{compiler_repo}"]).workspace_name
+
     for binary in BINARIES:
         bin_substitution = dict(substitutions)
         bin_substitution["{binary_target}"] = binary
+        bin_substitution["{compiler_repo}"] = "rules_roborio_toolchain~override~deps~roborio-compiler-linux"
         repository_ctx.template(
             "bin/" + binary + substitutions["{wrapper_extension}"],
             repository_ctx.path(Label("@rules_roborio_toolchain//toolchains/cross_compiler:command_wrapper.tpl")),
@@ -70,10 +78,12 @@ def configure_cross_compiler_impl(repository_ctx):
         substitutions = substitutions,
     )
 
+    bin_substitution = dict(substitutions)
+    bin_substitution["{actual_compiler_path}"] = compiler_workspace
     repository_ctx.template(
         "toolchain.bzl",
         repository_ctx.path(Label("@rules_roborio_toolchain//toolchains/cross_compiler:toolchain.tpl")),
-        substitutions = substitutions,
+        substitutions = bin_substitution,
     )
 
 configure_cross_compiler = repository_rule(

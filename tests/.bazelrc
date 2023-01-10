@@ -1,19 +1,18 @@
 try-import user.bazelrc
 
-# Roborio
-# build:roborio --copt=-std=c++17
-build:roborio --crosstool_top=@local_roborio//:compiler
-build:roborio --cpu=roborio
-build:roborio --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
-build:roborio --build_tag_filters=-no-roborio
-build:roborio --test_tag_filters=-no-roborio
 
-build:bionic --crosstool_top=@local_bionic//:compiler
-build:bionic --cpu=bionic
-build:bionic --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
-build:bionic --build_tag_filters=-no-bionic
-build:bionic --test_tag_filters=-no-bionic
+build --incompatible_enable_cc_toolchain_resolution
+build --enable_platform_specific_config
+
+# Roborio
+build:roborio --platforms=@rules_roborio_toolchain//toolchains/platforms/roborio
+# build:roborio --copt=-std=c++17
+# build:roborio --crosstool_top=@local_roborio//:compiler
+# build:roborio --cpu=roborio
+# build:roborio --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+# build:roborio --build_tag_filters=-no-roborio
+# build:roborio --test_tag_filters=-no-roborio
 
 # Global
 test --test_output=errors
-#build --experimental_enable_bzlmod
+# build --experimental_enable_bzlmod

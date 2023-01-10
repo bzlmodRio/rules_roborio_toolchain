@@ -3,10 +3,7 @@ load("@rules_cc//cc:defs.bzl", "cc_toolchain", "cc_toolchain_suite")
 
 
 def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper_extension):
-
-    # compiler = "Hello"
     tag = "{}".format(cpu)
-
 
     builtin_sysroot = "external/{}/{}".format(compiler_dep, sysroot_subfolder)
 
@@ -19,18 +16,17 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
 
     sysroot_everything = "@{}//:everything".format(compiler_dep)
 
-    print("**", sysroot_everything)
     toolchain_key = cpu
     
     cxx_builtin_include_directories = [
-            "external/{compiler_repo}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include",
-            "external/{compiler_repo}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include-fixed",
-            "external/{compiler_repo}/{sysroot}/usr/include/{sysroot_include_folder}/c++/{cxx_version}",
-            "external/{compiler_repo}/{sysroot}/usr/include/c++/{cxx_version}",
-            "external/{compiler_repo}/{sysroot}/usr/include/c++/{cxx_version}/{sysroot_include_folder}",
-            "external/{compiler_repo}/{sysroot}/usr/include/c++/{cxx_version}/backward",
-            "external/{compiler_repo}/{sysroot}/usr/include/{sysroot_include_folder}",
-            "external/{compiler_repo}/{sysroot}/usr/include",
+            "external/{actual_compiler_path}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include",
+            "external/{actual_compiler_path}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include-fixed",
+            "external/{actual_compiler_path}/{sysroot}/usr/include/{sysroot_include_folder}/c++/{cxx_version}",
+            "external/{actual_compiler_path}/{sysroot}/usr/include/c++/{cxx_version}",
+            "external/{actual_compiler_path}/{sysroot}/usr/include/c++/{cxx_version}/{sysroot_include_folder}",
+            "external/{actual_compiler_path}/{sysroot}/usr/include/c++/{cxx_version}/backward",
+            "external/{actual_compiler_path}/{sysroot}/usr/include/{sysroot_include_folder}",
+            "external/{actual_compiler_path}/{sysroot}/usr/include",
     ]
     
     cc_toolchain_config(
@@ -38,7 +34,6 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
         cpu = cpu,
         compiler = "hello",
         toolchain_identifier = toolchain_name,
-        # builtin_sysroot = builtin_sysroot,
         wrapper_extension=wrapper_extension,
         cxx_builtin_include_directories=cxx_builtin_include_directories
     )
@@ -50,6 +45,8 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
         ] ,
     )
 
+    print("HELLO")
+    print(cc_toolchain_name)
     cc_toolchain(
         name = cc_toolchain_name,
         all_files = compiler_files_name,
@@ -69,8 +66,8 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
 
     native.toolchain(
         name = toolchain_name,
-        exec_compatible_with = ["@bazel_tools//platforms/linux"],
-        target_compatible_with = ["@bazel_tools//platforms/linux"],
+        exec_compatible_with = ["@platforms//os:linux"],
+        target_compatible_with = ["@rules_roborio_toolchain//toolchains/conditions:true"],
         toolchain = cc_toolchain_name,
         toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
     )
