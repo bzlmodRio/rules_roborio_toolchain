@@ -67,7 +67,7 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
     native.toolchain(
         name = toolchain_name,
         exec_compatible_with = ["@platforms//os:linux"],
-        target_compatible_with = ["@rules_roborio_toolchain//toolchains/conditions:true"],
+        target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
         toolchain = cc_toolchain_name,
         toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
     )

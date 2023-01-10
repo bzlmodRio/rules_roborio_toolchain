@@ -17,6 +17,5 @@ constraint_value(
 config_setting(
     name = "roborio",
     constraint_values = [":true"],
-    # values = {"cpu": "roborio"},
     visibility = ["//visibility:public"],
 )

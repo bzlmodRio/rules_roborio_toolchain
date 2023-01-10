@@ -5,6 +5,6 @@ cc_binary(
     srcs = ["main.cpp"],
     defines = select({
         "//conditions:default": ["IS_ROBORIO_TEST=0"],
-        "@rules_roborio_toolchain//toolchains/conditions:roborio": ["IS_ROBORIO_TEST=1"],
+        "@rules_roborio_toolchain//constraints/is_roborio:roborio": ["IS_ROBORIO_TEST=1"],
     }),
 )
