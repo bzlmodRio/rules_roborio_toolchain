@@ -179,7 +179,6 @@ cc_toolchain_config = rule(
     attrs = {
         "cpu": attr.string(mandatory = True),
         "compiler": attr.string(mandatory = True),
-        # "builtin_sysroot": attr.string(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),
         "wrapper_extension": attr.string(mandatory = True),
         "cxx_builtin_include_directories": attr.string_list(mandatory = True),
