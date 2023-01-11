@@ -19,16 +19,16 @@ def configure_cross_compiler_impl(repository_ctx):
     if repository_ctx.os.name.startswith("windows"):
         substitutions["{command_prefix}"] = "@echo off\n"
         substitutions["{tool_platform_suffix}"] = ".exe"
-        substitutions["{compiler_repo}"] = compiler_name + "-compiler-win"
+        substitutions["{compiler_repo}"] = "bazelrio_roborio_toolchain_windows"
         substitutions["{sep}"] = "\\"
         substitutions["{bin_subfolder}"] = substitutions["{bin_subfolder}"].replace("/", "\\")
 
         substitutions["{arg_passthrough}"] = "%*"
         substitutions["{wrapper_extension}"] = ".bat"
     elif repository_ctx.os.name == "mac os x":
-        substitutions["{compiler_repo}"] = compiler_name + "-compiler-osx"
+        substitutions["{compiler_repo}"] = "bazelrio_roborio_toolchain_macos"
     elif repository_ctx.os.name == "linux":
-        substitutions["{compiler_repo}"] = compiler_name + "-compiler-linux"
+        substitutions["{compiler_repo}"] = "bazelrio_roborio_toolchain_linux"
     else:
         fail("Unknown os " + repository_ctx.os.name)
 

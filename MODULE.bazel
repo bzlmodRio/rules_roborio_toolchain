@@ -8,6 +8,8 @@ module(
 bazel_dep(name = "platforms", version = "0.0.4")
 bazel_dep(name = "rules_cc", version = "0.0.2")
 
+bazel_dep(name = "bzlmodrio-gentool", version = "")
+
 deps = use_extension("//:maven_deps.bzl", "deps")
 use_repo(
     deps,
@@ -15,8 +17,6 @@ use_repo(
     "roborio-compiler-linux",
     "roborio-compiler-windows",
 )
-
-print("Hello world")
 
 sh_configure = use_extension("@rules_roborio_toolchain//:extensions.bzl", "sh_configure")
 use_repo(sh_configure, "local_roborio")

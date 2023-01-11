@@ -6,3 +6,7 @@ local_path_override(
     path = "..",
 )
 
+local_path_override(
+    module_name = "bzlmodrio-gentool",
+    path = "../../gentool",
+)
