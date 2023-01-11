@@ -19,7 +19,9 @@ def get_toolchain_dependencies():
 
     config = CppToolchainConfig(
             year="2023",
-            release_version="2023_7",
+            release_version="2023_7",    
+            repo_name = "rules_roborio_toolchain",
+            version = "2023-7.2",
             **DEFAULT_ARGS,
         )
 

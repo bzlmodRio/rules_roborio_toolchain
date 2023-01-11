@@ -1,16 +1,27 @@
 {
     "build_file": null,
-    "build_targets": [],
+    "build_targets": [
+        "@rules_roborio_toolchain//..."
+    ],
     "compatibility_level": "{{group.year}}",
-    "deps": [],
-    "module_dot_bazel": "{{module_bazel_file}}",
+    "deps": [
+        [
+            "platforms",
+            "0.0.4"
+        ],
+        [
+            "rules_cc",
+            "0.0.2"
+        ]
+    ],
+    "module_dot_bazel": null,
     "name": "rules_roborio_toolchain",
     "patch_strip": 0,
     "patches": [],
     "presubmit_yml": null,
-    "strip_prefix": "bzlmodRio-{{group.repo_name}}-{{hash}}",
+    "strip_prefix": "{{group.repo_name}}-{{hash}}",
     "test_module_build_targets": [],
-    "test_module_path": "test",
+    "test_module_path": null,
     "test_module_test_targets": [],
     "url": "https://github.com/bzlmodRio/{{group.repo_name}}/archive/{{hash}}.tar.gz",
     "version": "{{group.version}}"
