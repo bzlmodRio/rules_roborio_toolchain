@@ -12,3 +12,10 @@ py_binary(
     deps = ["@bzlmodrio-gentool//bazelrio_gentool", ":get_toolchain_dependencies"],
     visibility = ["//visibility:public"]
 )
+
+py_binary(
+    name = "publish_roborio_toolchain",
+    srcs = ["publish_roborio_toolchain.py"],
+    deps = ["@bzlmodrio-gentool//bazelrio_gentool", ":get_toolchain_dependencies"],
+    visibility = ["//visibility:public"]
+)
