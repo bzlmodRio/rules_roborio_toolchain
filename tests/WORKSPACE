@@ -10,5 +10,7 @@ load("@rules_roborio_toolchain//toolchains:load_toolchains.bzl", "load_toolchain
 load_toolchains()
 
 register_toolchains(
-    "@local_roborio//:cc-toolchain-roborio",
+    "@local_roborio//:windows",
+    "@local_roborio//:linux",
+    "@local_roborio//:macos",
 )

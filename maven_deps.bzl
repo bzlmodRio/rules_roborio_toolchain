@@ -1,29 +1,12 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_jar")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
-filegroup_all = """
-
-filegroup(
-    name = "tools",
-    srcs = glob(["roborio-academic/bin/arm-frc2023-linux-gnueabi-*"]),
+filegroup_all = """filegroup(
+    name = "all",
+    srcs = glob(["**"]),
     visibility = ["//visibility:public"],
 )
-
-filegroup(
-    name = "includes",
-    srcs = glob([
-        "roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/lib/**",
-        "roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/include/**",
-    ]),
-    visibility = ["//visibility:public"],
-)
-
-filegroup(
-    name = "everything",
-    srcs = [":tools", ":includes"],
-    visibility = ["//visibility:public"],
-)
- """
+"""
 
 def __setup_toolchains_dependencies(mctx):
     # C++
@@ -43,7 +26,7 @@ def __setup_toolchains_dependencies(mctx):
     )
     maybe(
         http_archive,
-        "roborio-compiler-windows",
+        "roborio-compiler-win",
         url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
         sha256 = "36b94b972fd017f6fd15a57ddbaa20e18616d72f7de16d9c81c03a1e58cb8475",
         build_file_content = filegroup_all,

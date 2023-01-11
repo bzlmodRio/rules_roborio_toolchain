@@ -14,7 +14,7 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
     toolchain_name = "cc-toolchain-{}".format(tag)
     cc_toolchain_suite_name = "compiler"
 
-    sysroot_everything = "@{}//:everything".format(compiler_dep)
+    sysroot_everything = "@{}//:all".format(compiler_dep)
 
     toolchain_key = cpu
     
@@ -67,8 +67,24 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
     )
 
     native.toolchain(
-        name = toolchain_name,
+        name = "windows",
+        exec_compatible_with = ["@platforms//os:windows"],
+        target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
+        toolchain = cc_toolchain_name,
+        toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
+    )
+
+    native.toolchain(
+        name = "linux",
         exec_compatible_with = ["@platforms//os:linux"],
+        target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
+        toolchain = cc_toolchain_name,
+        toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
+    )
+
+    native.toolchain(
+        name = "macos",
+        exec_compatible_with = ["@platforms//os:macos"],
         target_compatible_with = ["@rules_roborio_toolchain//constraints/is_roborio:true"],
         toolchain = cc_toolchain_name,
         toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
