@@ -5,8 +5,6 @@ load("@rules_cc//cc:defs.bzl", "cc_toolchain", "cc_toolchain_suite")
 def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper_extension):
     tag = "{}".format(cpu)
 
-    builtin_sysroot = "external/{}/{}".format(compiler_dep, sysroot_subfolder)
-
     cc_toolchain_config_name = "cc-toolchain_config-{}".format(tag)
 
     compiler_files_name = "compiler_files-{}".format(tag)
@@ -19,7 +17,6 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
     toolchain_key = cpu
     
     cxx_builtin_include_directories = [
-            "external/roborio-compiler-linux/roborio-academic/arm-nilrt-linux-gnueabi/sysroot/usr/lib/gcc/arm-nilrt-linux-gnueabi/12/include",
             "external/{actual_compiler_path}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include",
             "external/{actual_compiler_path}/{sysroot}/usr/lib/gcc/{sysroot_include_folder}/{cxx_version}/include-fixed",
             "external/{actual_compiler_path}/{sysroot}/usr/include/{sysroot_include_folder}/c++/{cxx_version}",
@@ -29,7 +26,6 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
             "external/{actual_compiler_path}/{sysroot}/usr/include/{sysroot_include_folder}",
             "external/{actual_compiler_path}/{sysroot}/usr/include",
     ]
-    print("\n" + "\n".join(cxx_builtin_include_directories))
     
     cc_toolchain_config(
         name = cc_toolchain_config_name,
@@ -56,10 +52,8 @@ def create_cross_compile_toolchain(compiler_dep, cpu, sysroot_subfolder, wrapper
         as_files = compiler_files_name,
         compiler_files =  compiler_files_name,
         dwp_files = compiler_files_name,
-        # dynamic_runtime_lib = [],
         linker_files =  compiler_files_name,
         objcopy_files = compiler_files_name,
-        # static_runtime_lib = [],
         strip_files = compiler_files_name,
         supports_param_files = True,
         toolchain_config = cc_toolchain_config_name,

@@ -18,7 +18,7 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello world: " << IS_ROBORIO_TEST << ", " << std::endl;
+    std::cout << "Hello world: " << IS_ROBORIO_TEST << std::endl;
 #ifdef __FRC_ROBORIO__
     std::cout << "Roborio: " << __FRC_ROBORIO__ << std::endl;
 #endif

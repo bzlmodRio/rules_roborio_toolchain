@@ -41,7 +41,6 @@ def _impl(ctx):
     ]
 
     tool_paths = [
-        # NEW
         tool_path(name = "gcc", path = "bin/gcc" + wrapper_extension),
         tool_path(name = "ld", path = "bin/ld" + wrapper_extension),
         tool_path(name = "ar", path = "bin/ar" + wrapper_extension),
@@ -123,8 +122,6 @@ def _impl(ctx):
                 flag_groups = [
                     flag_group(
                         flags = [
-                            "-std=c++17",
-                            "-Wno-error=deprecated-declarations",
                             "-lstdc++",
                         ],
                     ),
@@ -163,14 +160,14 @@ def _impl(ctx):
         ctx = ctx,
         features = features,
         toolchain_identifier = ctx.attr.toolchain_identifier,
-        host_system_name = "arfsd",
-        target_system_name = "arfsd",
+        host_system_name = "local",
+        target_system_name = "arm-frc2023-linux-gnueabi",
         target_cpu = ctx.attr.cpu,
         target_libc = "unknown",
         compiler = ctx.attr.compiler,
         abi_version = "unknown",
         abi_libc_version = "unknown",
-        tool_paths = tool_paths,  # NEW
+        tool_paths = tool_paths,
         cxx_builtin_include_directories = cxx_builtin_include_directories,
         # builtin_sysroot = ctx.attr.builtin_sysroot,
     )
