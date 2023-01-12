@@ -19,6 +19,5 @@ build:roborio --platforms=@rules_roborio_toolchain//platforms/roborio
 # Global
 test --test_output=errors
 build --incompatible_enable_cc_toolchain_resolution
-build --enable_platform_specific_config
 build --java_language_version=11
 build --registry=https://raw.githubusercontent.com/pjreiniger/bazel-central-registry/megadiff/
