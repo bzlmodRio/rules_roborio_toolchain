@@ -162,11 +162,12 @@ def _impl(ctx):
         toolchain_identifier = ctx.attr.toolchain_identifier,
         host_system_name = "local",
         target_system_name = "arm-frc2023-linux-gnueabi",
-        target_cpu = ctx.attr.cpu,
-        target_libc = "unknown",
-        compiler = ctx.attr.compiler,
-        abi_version = "unknown",
-        abi_libc_version = "unknown",
+        target_cpu = "armv7",
+        target_libc = "glibc-2.24",
+        cc_target_os = "linux",
+        compiler = "gcc-12.1.0",
+        abi_version = "gcc-12.1.0",
+        abi_libc_version = "glibc-2.24",
         tool_paths = tool_paths,
         cxx_builtin_include_directories = cxx_builtin_include_directories,
         # builtin_sysroot = ctx.attr.builtin_sysroot,
@@ -174,8 +175,6 @@ def _impl(ctx):
 
 cc_toolchain_config = rule(
     attrs = {
-        "cpu": attr.string(mandatory = True),
-        "compiler": attr.string(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),
         "wrapper_extension": attr.string(mandatory = True),
         "cxx_builtin_include_directories": attr.string_list(mandatory = True),
