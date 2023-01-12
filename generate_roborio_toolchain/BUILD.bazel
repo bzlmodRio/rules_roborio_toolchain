@@ -1,21 +1,26 @@
-
 py_library(
     name = "get_toolchain_dependencies",
     srcs = ["get_toolchain_dependencies.py"],
+    visibility = ["//visibility:public"],
     deps = ["@bzlmodrio-gentool//bazelrio_gentool"],
-    visibility = ["//visibility:public"]
 )
 
 py_binary(
     name = "generate_toolchain_deps",
     srcs = ["generate_toolchain_deps.py"],
-    deps = ["@bzlmodrio-gentool//bazelrio_gentool", ":get_toolchain_dependencies"],
-    visibility = ["//visibility:public"]
+    visibility = ["//visibility:public"],
+    deps = [
+        ":get_toolchain_dependencies",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
 )
 
 py_binary(
     name = "publish_roborio_toolchain",
     srcs = ["publish_roborio_toolchain.py"],
-    deps = ["@bzlmodrio-gentool//bazelrio_gentool", ":get_toolchain_dependencies"],
-    visibility = ["//visibility:public"]
+    visibility = ["//visibility:public"],
+    deps = [
+        ":get_toolchain_dependencies",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
 )
