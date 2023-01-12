@@ -44,6 +44,7 @@ def configure_cross_compiler_impl(repository_ctx):
     ]
 
     compiler_workspace = Label("@" + substitutions["{compiler_repo}"]).workspace_name
+    substitutions["{actual_compiler_path}"] = compiler_workspace
 
     for binary in BINARIES:
         bin_substitution = dict(substitutions)
@@ -67,12 +68,10 @@ def configure_cross_compiler_impl(repository_ctx):
         substitutions = substitutions,
     )
 
-    bin_substitution = dict(substitutions)
-    bin_substitution["{actual_compiler_path}"] = compiler_workspace
     repository_ctx.template(
         "toolchain.bzl",
         repository_ctx.path(Label("@rules_roborio_toolchain//toolchains/cross_compiler:toolchain.tpl")),
-        substitutions = bin_substitution,
+        substitutions = substitution,
     )
 
 configure_cross_compiler = repository_rule(
