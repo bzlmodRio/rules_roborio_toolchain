@@ -11,12 +11,16 @@ def main():
 
     group = get_toolchain_dependencies()
     
+    module_template = os.path.join(SCRIPT_DIR, "module_config.jinja2")
     module_json_template = os.path.join(SCRIPT_DIR, "module_config.json.jinja2")
     print(module_json_template)
 
     os.chdir(SCRIPT_DIR)
-    generate_json(registry_location, group, module_json_template)
+    generate_json(registry_location, group, module_json_template, module_template)
 
 
 if __name__ == "__main__":
+    """
+
+    """
     main()
