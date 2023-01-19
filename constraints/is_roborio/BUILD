@@ -19,3 +19,12 @@ config_setting(
     constraint_values = [":true"],
     visibility = ["//visibility:public"],
 )
+
+config_setting(
+    name = "roborio_debug",
+    constraint_values = [":true"],
+    values = {
+        "compilation_mode": "dbg",
+    },
+    visibility = ["//visibility:public"],
+)
