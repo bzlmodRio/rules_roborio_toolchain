@@ -23,7 +23,7 @@ def get_toolchain_dependencies():
         year="2023",
         release_version="2023_7",
         repo_name="rules_roborio_toolchain",
-        version="2023-7.4",
+        version="2023-7.5",
         **DEFAULT_ARGS,
     )
 
