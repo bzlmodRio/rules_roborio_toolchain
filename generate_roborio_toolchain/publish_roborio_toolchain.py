@@ -20,7 +20,7 @@ def main():
 
 
 if __name__ == "__main__":
-    """ 
+    """
     bazel run @rules_roborio_toolchain//generate_roborio_toolchain:publish_roborio_toolchain --enable_bzlmod
     """
     main()
