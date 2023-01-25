@@ -1,7 +1,5 @@
 import os
-from generate_roborio_toolchain.get_toolchain_dependencies import (
-    get_toolchain_dependencies,
-)
+from get_toolchain_dependencies import get_toolchain_dependencies
 
 from bazelrio_gentool.generate_toolchain import generate_toolchain
 from bazelrio_gentool.clean_existing_version import clean_existing_version
@@ -13,7 +11,6 @@ def main():
     output_dir = os.path.join(REPO_DIR, "dependencies")
 
     group = get_toolchain_dependencies()
-    print(group)
 
     clean_existing_version(REPO_DIR)
     generate_toolchain(REPO_DIR, group)

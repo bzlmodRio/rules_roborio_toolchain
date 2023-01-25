@@ -6,8 +6,8 @@ py_library(
 )
 
 py_binary(
-    name = "generate_toolchain_deps",
-    srcs = ["generate_toolchain_deps.py"],
+    name = "generate",
+    srcs = ["generate.py"],
     visibility = ["//visibility:public"],
     deps = [
         ":get_toolchain_dependencies",
@@ -16,8 +16,8 @@ py_binary(
 )
 
 py_binary(
-    name = "publish_roborio_toolchain",
-    srcs = ["publish_roborio_toolchain.py"],
+    name = "publish",
+    srcs = ["publish.py"],
     visibility = ["//visibility:public"],
     deps = [
         ":get_toolchain_dependencies",
