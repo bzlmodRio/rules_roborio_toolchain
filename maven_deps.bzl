@@ -13,30 +13,22 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_macos",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2022-1/FRC-2022-Mac-Toolchain-7.3.0.tar.gz",
-        sha256 = "47d29989d2618c0fc439b72e8d3d734b93952da4136dd05a7648af19662700b7",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
+        sha256 = "345bcbbc81958ad91dc87f51a94f1a709fdd7001b7f2995eaa016c04822f6d17",
         build_file_content = filegroup_all,
-        patches = [
-            "@rules_roborio_toolchain//patches:libc_no_sandboxfs.patch",
-            "@rules_roborio_toolchain//patches:libpthread_no_sandboxfs.patch",
-        ],
     )
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_linux",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2022-1/FRC-2022-Linux-Toolchain-7.3.0.tar.gz",
-        sha256 = "b27cde302e46d11524aedf664129bc3ac7df02a78d0f9e4ab3f1feb40d667ab4",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
+        sha256 = "f3d48103c311e07e4da5e6f2cae426d34d582b627c342f20407530f8cb1c93a1",
         build_file_content = filegroup_all,
-        patches = [
-            "@rules_roborio_toolchain//patches:libc_no_sandboxfs.patch",
-            "@rules_roborio_toolchain//patches:libpthread_no_sandboxfs.patch",
-        ],
     )
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_windows",
-        url = "https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2022-1/FRC-2022-Windows32-Toolchain-7.3.0.zip",
-        sha256 = "0c4601cfaaf97612cef34bbfeb8aebc73c6ad3b4e262024cecae75eb8bca8277",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
+        sha256 = "36b94b972fd017f6fd15a57ddbaa20e18616d72f7de16d9c81c03a1e58cb8475",
         build_file_content = filegroup_all,
     )
 

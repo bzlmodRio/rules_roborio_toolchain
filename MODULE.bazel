@@ -1,7 +1,7 @@
 module(
     name = "rules_roborio_toolchain",
-    version = "2022-1",
-    compatibility_level = 2022,
+    version = "2023-7",
+    compatibility_level = 2023,
 )
 
 bazel_dep(name = "platforms", version = "0.0.4")
