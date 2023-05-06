@@ -4,7 +4,7 @@ from bazelrio_gentool.generate_json import generate_json
 
 
 def main():
-    SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+    SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
     registry_location = os.path.join(
         SCRIPT_DIR, "..", "..", "..", "bazel-central-registry"
     )
